@@ -22,9 +22,6 @@ jobs:
           ca-base64:  ${{ secrets.DEV_K8S_CA }}
           token:      ${{ secrets.DEV_K8S_TOKEN }}
           namespace:  default
-    
-      - name: Test kubectl
-        run: kubectl version 
 
-      - name: Test helm
-        run: helm version 
+      - name: Deploy Chart
+        run: helm install  
