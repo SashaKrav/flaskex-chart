@@ -2,9 +2,9 @@ name: CD
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "dev" ]
+    branches: [ "master" ]
 
   workflow_dispatch:
 
@@ -18,9 +18,9 @@ jobs:
       - name: Setup KUBECONFIG
         uses: vbem/kubeconfig4sa@v1
         with:
-          server:     ${{ secrets.DEV_K8S_SERVER }}
-          ca-base64:  ${{ secrets.DEV_K8S_CA }}
-          token:      ${{ secrets.DEV_K8S_TOKEN }}
+          server:     ${{ secrets.PROD_K8S_SERVER }}
+          ca-base64:  ${{ secrets.PROD_K8S_CA }}
+          token:      ${{ secrets.PROD_K8S_TOKEN }}
           namespace:  default
 
       - name: Deploy Chart
