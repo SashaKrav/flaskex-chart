@@ -9,12 +9,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup KUBECONFIG
+        uses: vbem/kubeconfig4sa@v1
+        with:
+          server:     ${{ secrets.K8S_SERVER }}
+          ca-base64:  ${{ secrets.K8S_CA }}
+          token:      ${{ secrets.K8S_TOKEN }}
+          namespace:  default
+    
       - name: Test kubectl
         run: kubectl version 
 
