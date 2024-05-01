@@ -24,4 +24,4 @@ jobs:
           namespace:  default
 
       - name: Deploy Chart
-        run: helm install  
+        run: helm upgrade --install myapp -f custom-values.yaml  .
